@@ -53,6 +53,8 @@ This application/site was created as a submission to a [DevChallenges](https://d
 - Setting up client
 - Adding socket library
 - Adding player(current client)
+- Adding other players
+- handling player input
 
 ## How To Use
 
