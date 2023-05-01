@@ -35,10 +35,18 @@ io.on("connection", function (socket) {
   // send new player information to all players except new player
   socket.broadcast.emit("newPlayer", players[socket.id])
 
+  socket.on('playerMovement', function (movementData) {
+    players[socket.id].x = movementData.x;
+    players[socket.id].y = movementData.y;
+    players[socket.id].rotation = movementData.rotation;
+    // emit a message to all players about the player that moved
+    socket.broadcast.emit('playerMoved', players[socket.id]);
+  });
+
   // on disconnection of a player
   socket.on("disconnect", function () {
     console.log("user disconnected")
     delete players[socket.id]
-    socket.emit("disconnected", socket.id)
+    io.emit("disconnected", socket.id)
   })
 })

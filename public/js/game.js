@@ -40,8 +40,16 @@ function create() {
     addOtherPlayers(self, playerInfo)
   })
 
+  this.socket.on('playerMoved', function (playerInfo) {
+    self.otherPlayers.getChildren().forEach(function (otherPlayer) {
+      if (playerInfo.playerId === otherPlayer.playerId) {
+        otherPlayer.setRotation(playerInfo.rotation);
+        otherPlayer.setPosition(playerInfo.x, playerInfo.y);
+      }
+    });
+  });
+
   this.socket.on("disconnected", function (playerId) {
-    console.log(self.otherPlayers.getChildren())
     self.otherPlayers.getChildren().forEach(function (otherPlayer) {
       if (otherPlayer.playerId === playerId) {
         otherPlayer.destroy()
@@ -54,6 +62,7 @@ function create() {
 
 function update() {
   if (this.ship) {
+    // handle movement
     if (this.cursors.left.isDown) {
       this.ship.setAngularVelocity(-150);
     } else if (this.cursors.right.isDown) {
@@ -69,6 +78,20 @@ function update() {
     }
 
     this.physics.world.wrap(this.ship, 5);
+
+    // emit player movement
+    const x = this.ship.x;
+    const y = this.ship.y;
+    const r = this.ship.rotation;
+    if (this.ship.oldPosition && (x !== this.ship.oldPosition.x || y !== this.ship.oldPosition.y || r !== this.ship.oldPosition.rotation)) {
+      this.socket.emit('playerMovement', { x: this.ship.x, y: this.ship.y, rotation: this.ship.rotation });
+    }
+    // save old position data
+    this.ship.oldPosition = {
+      x: this.ship.x,
+      y: this.ship.y,
+      rotation: this.ship.rotation
+    };
   }
 }
 

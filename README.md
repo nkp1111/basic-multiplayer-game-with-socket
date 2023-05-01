@@ -55,6 +55,7 @@ This application/site was created as a submission to a [DevChallenges](https://d
 - Adding player(current client)
 - Adding other players
 - handling player input
+- handling other player input
 
 ## How To Use
 
