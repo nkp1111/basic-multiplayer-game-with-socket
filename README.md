@@ -1,8 +1,6 @@
 
 <h1 align="center">Basic Multiplayer Game</h1>
 
-- This is a basic multiplayer game with socket.io library
-
 <div align="center">
    Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
 </div>
@@ -28,11 +26,14 @@
 - [Overview](#overview)
   - [Built With](#built-with)
 - [Features](#features)
+- [Steps](#steps-to-follow)
 - [How to use](#how-to-use)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
 
 ## Overview
+
+- This is a basic multiplayer game with socket.io library
 
 ![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
 
@@ -44,6 +45,10 @@
 ## Features
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/UgCqszKR7Q7oqb4kRfI0) was to build an application to complete the given user stories.
+
+## Steps to follow
+
+- Setting up server
 
 ## How To Use
 
@@ -63,6 +68,7 @@ $ npm start
 ## Acknowledgements
 
 - [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
+- [gamedevacademy](https://gamedevacademy.org/)
 - [Node.js](https://nodejs.org/)
 -
 
