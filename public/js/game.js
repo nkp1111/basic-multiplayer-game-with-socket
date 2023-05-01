@@ -40,7 +40,8 @@ function create() {
     addOtherPlayers(self, playerInfo)
   })
 
-  this.socket.on("userDisconnected", function (playerId) {
+  this.socket.on("disconnected", function (playerId) {
+    console.log(self.otherPlayers.getChildren())
     self.otherPlayers.getChildren().forEach(function (otherPlayer) {
       if (otherPlayer.playerId === playerId) {
         otherPlayer.destroy()
