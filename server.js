@@ -16,6 +16,14 @@ server.listen(port, () => {
 })
 
 const players = {}
+const star = {
+  x: Math.floor(Math.random() * 700) + 50,
+  y: Math.floor(Math.random() * 500) + 50
+};
+const scores = {
+  blue: 0,
+  red: 0
+};
 
 // starting connection
 io.on("connection", function (socket) {
@@ -35,12 +43,31 @@ io.on("connection", function (socket) {
   // send new player information to all players except new player
   socket.broadcast.emit("newPlayer", players[socket.id])
 
+  // send the star object to the new player
+  socket.emit('starLocation', star);
+  // send the current scores
+  socket.emit('scoreUpdate', scores);
+
+  // update player position
   socket.on('playerMovement', function (movementData) {
     players[socket.id].x = movementData.x;
     players[socket.id].y = movementData.y;
     players[socket.id].rotation = movementData.rotation;
     // emit a message to all players about the player that moved
     socket.broadcast.emit('playerMoved', players[socket.id]);
+  });
+
+  // check start collision with players
+  socket.on('starCollected', function () {
+    if (players[socket.id].team === 'red') {
+      scores.red += 10;
+    } else {
+      scores.blue += 10;
+    }
+    star.x = Math.floor(Math.random() * 700) + 50;
+    star.y = Math.floor(Math.random() * 500) + 50;
+    io.emit('starLocation', star);
+    io.emit('scoreUpdate', scores);
   });
 
   // on disconnection of a player
