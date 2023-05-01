@@ -41,6 +41,7 @@
 
 - Express
 - Phaser
+- Socket.io
 
 ## Features
 
@@ -50,6 +51,7 @@ This application/site was created as a submission to a [DevChallenges](https://d
 
 - Setting up server
 - Setting up client
+- Adding socket library
 
 ## How To Use
 
@@ -71,7 +73,6 @@ $ npm start
 - [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
 - [gamedevacademy](https://gamedevacademy.org/)
 - [Node.js](https://nodejs.org/)
--
 
 ## Contact
 

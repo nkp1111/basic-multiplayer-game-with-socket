@@ -1,7 +1,3 @@
-const preload = () => { }
-const create = () => { }
-const update = () => { }
-
 let config = {
   type: Phaser.AUTO,
   parent: 'phaser-example',
@@ -20,5 +16,11 @@ let config = {
     update: update
   }
 };
+
+function preload() { }
+function create() {
+  this.socket = io()
+}
+function update() { }
 
 let game = new Phaser.Game(config);
