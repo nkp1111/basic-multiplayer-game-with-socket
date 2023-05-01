@@ -40,7 +40,7 @@
 ### Built With
 
 - Express
-- Bootstrap
+- Phaser
 
 ## Features
 
@@ -49,6 +49,7 @@ This application/site was created as a submission to a [DevChallenges](https://d
 ## Steps to follow
 
 - Setting up server
+- Setting up client
 
 ## How To Use
 
